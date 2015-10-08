@@ -43,3 +43,6 @@ group :development, :test do
   gem 'spring'
 end
 
+group :deployment do
+  gem 'rails_12factor'
+end
