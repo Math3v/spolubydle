@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: spolubydle_production
-  username: spolubydle
-  password: <%= ENV['SPOLUBYDLE_DATABASE_PASSWORD'] %>
+  database: spolubydle
+  username: adminlycpnhv
+  password: d6dpHYZxSynR
