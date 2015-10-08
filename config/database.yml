@@ -83,6 +83,4 @@ test:
 #
 production:
   <<: *default
-  database: spolubydle
-  username: adminlycpnhv
-  password: d6dpHYZxSynR
+  database: spolubydle_production
