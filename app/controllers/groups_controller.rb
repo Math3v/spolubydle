@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
+        format.json { render json: @group, status: :created }
       else
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { render :show, status: :ok, location: @group }
+        format.json { render json: @group, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @group.errors, status: :unprocessable_entity }
