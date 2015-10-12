@@ -4,7 +4,11 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    if params[:group_id].present?
+      @members = Member.where(group_id: params[:group_id])
+    else
+      @members = Member.all
+    end
   end
 
   # GET /members/1
