@@ -30,7 +30,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
-        format.json { render :show, status: :created, location: @member }
+        format.json { render json: @member, status: :created }
       else
         format.html { render :new }
         format.json { render json: @member.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
-        format.json { render :show, status: :ok, location: @member }
+        format.json { render json: @member, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @member.errors, status: :unprocessable_entity }
