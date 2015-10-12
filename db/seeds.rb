@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+g = Group.find_or_create_by(name: 'TestGroup')
+
+Member.find_or_create_by(name: 'TestMember1', admin: true, group_id: g.id)
+Member.find_or_create_by(name: 'TestMember2', admin: false, group_id: g.id)
+Member.find_or_create_by(name: 'TestMember3', admin: false, group_id: nil)
