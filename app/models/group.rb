@@ -1,4 +1,7 @@
 class Group < ActiveRecord::Base
+
+  has_many :members
+
   validates :name, presence: true
   validates :code, uniqueness: true
 
