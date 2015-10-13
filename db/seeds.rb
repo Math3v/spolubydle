@@ -8,6 +8,9 @@
 
 g = Group.find_or_create_by(name: 'TestGroup')
 
-Member.find_or_create_by(name: 'TestMember1', admin: true, group_id: g.id)
-Member.find_or_create_by(name: 'TestMember2', admin: false, group_id: g.id)
-Member.find_or_create_by(name: 'TestMember3', admin: false, group_id: nil)
+m1 = Member.find_or_create_by(name: 'TestMember1', admin: true, group_id: g.id)
+m2 = Member.find_or_create_by(name: 'TestMember2', admin: false, group_id: g.id)
+m3 = Member.find_or_create_by(name: 'TestMember3', admin: false, group_id: nil)
+
+Task.find_or_create_by(description: 'Wash dishes', due_date: Date.new(2015, 12, 24), group_id: g.id, member_id: m1.id)
+Task.find_or_create_by(description: 'Wash floors', due_date: Date.new(2015, 12, 25), group_id: g.id, member_id: m2.id)

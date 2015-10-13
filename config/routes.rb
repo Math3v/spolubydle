@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :members
+  resources :tasks
+
+  resources :members do
+    resources :tasks, only: :index
+  end
 
   resources :groups do
-    resources :members
+    resources :members, only: :index
+    resources :tasks, only: :index
   end
 
   root 'groups#index'
