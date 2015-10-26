@@ -74,12 +74,15 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :admin, :group_id)
+      params.require(:member).permit(:name, :admin, :group_id, :group_code)
     end
 
     def set_group_id
       if params[:group_id].present?
         @member.group_id = params[:group_id]
+        @member.save
+      elsif params[:group_code].present?
+        @member.group_id = Group.find_by_code(params[:group_code])
         @member.save
       end
     end
