@@ -1,7 +1,0 @@
-Mon, 12 Oct 2015 21:21:33 +0200
-README.rdoc	Thu, 08 Oct 2015 18:01:41 +0200
-app/controllers/application_controller.rb	Thu, 08 Oct 2015 18:01:41 +0200
-app/controllers/groups_controller.rb	Thu, 08 Oct 2015 18:49:21 +0200
-app/helpers/application_helper.rb	Thu, 08 Oct 2015 18:01:41 +0200
-app/helpers/groups_helper.rb	Thu, 08 Oct 2015 18:49:21 +0200
-app/models/group.rb	Sun, 11 Oct 2015 12:15:48 +0200
