@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :recalculate]
 
   # GET /groups
   # GET /groups.json
@@ -59,6 +59,20 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def recalculate
+    begin
+      @day = params[:day].to_i
+      @month = params[:month].to_i
+      @year = params[:year].to_i
+      @today = Date.new(@year, @month, @day)
+    rescue => e
+      render json: { error: e.message }, status: :unprocessable_entity and return
+    end
+
+    @group.recalculate_tasks(@today)
+    render json: { tasks: @group.tasks }, status: :ok
   end
 
   private

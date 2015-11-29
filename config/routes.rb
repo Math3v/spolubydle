@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :groups do
     resources :members, only: :index
     resources :tasks, only: :index
+    member do
+      get 'recalculate'
+    end
   end
 
   root 'groups#index'
