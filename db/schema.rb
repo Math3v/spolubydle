@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129114740) do
+ActiveRecord::Schema.define(version: 20151129163029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20151129114740) do
     t.boolean  "done"
     t.integer  "points"
     t.integer  "points_original"
+    t.integer  "days_per_cycle"
   end
 
   add_index "tasks", ["group_id"], name: "index_tasks_on_group_id", using: :btree

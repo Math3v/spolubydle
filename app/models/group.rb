@@ -20,7 +20,8 @@ class Group < ActiveRecord::Base
         # Assign task to next member
         next_member_id = next_member(task.member_id)
         task.update({member_id: next_member_id,
-                     points: task.points_original})
+                     points: task.points_original,
+                     due_date: today + task.days_per_cycle})
       elsif !task.done? && @dif_date > 0
         # OK
       elsif !task.done? && @dif_date < 0
