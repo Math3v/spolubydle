@@ -84,7 +84,7 @@ class TasksController < ApplicationController
       begin
         year = params[:task][:due_date][:year]
         month = params[:task][:due_date][:month]
-        day = params[:task][:due_date][:month]
+        day = params[:task][:due_date][:day]
         @task.update({due_date: Date.new(year.to_i, month.to_i, day.to_i) })
       rescue => e
         render json: { error: "Invalid date syntax" }, status: :unprocessable_entity and return
