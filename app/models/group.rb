@@ -19,6 +19,7 @@ class Group < ActiveRecord::Base
       elsif task.done? && @dif_date < 0
         # Assign task to next member
         next_member_id = next_member(task.member_id)
+        update_member_points(task)
         task.update({member_id: next_member_id,
                      points: task.points_original,
                      due_date: today + task.days_per_cycle})
@@ -66,5 +67,13 @@ class Group < ActiveRecord::Base
       else
         points.to_f * ((4 - days.to_f) / 4)
       end
+    end
+
+    def update_member_points(task)
+      member = Member.find(task.member_id)
+      points = member.points
+      member.update({
+        points: points + task.points
+      })
     end
 end
