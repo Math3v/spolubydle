@@ -8,10 +8,10 @@
 
 g = Group.find_or_create_by(name: 'Byt Brno')
 
-m1 = Member.find_or_create_by(name: 'Standa', admin: false, group_id: g.id, color_id: 0)
-m2 = Member.find_or_create_by(name: 'Jirka',  admin: false, group_id: g.id, color_id: 1)
-m3 = Member.find_or_create_by(name: 'Honza',  admin: false, group_id: g.id, color_id: 4)
-m4 = Member.find_or_create_by(name: 'Pavel',  admin: false, group_id: g.id, color_id: 6)
+m1 = Member.find_or_create_by(name: 'Standa', admin: false, group_id: g.id, color_id: 0, points: 800)
+m2 = Member.find_or_create_by(name: 'Jirka',  admin: false, group_id: g.id, color_id: 1, points: 750)
+m3 = Member.find_or_create_by(name: 'Honza',  admin: false, group_id: g.id, color_id: 4, points: 200)
+m4 = Member.find_or_create_by(name: 'Pavel',  admin: false, group_id: g.id, color_id: 6, points: 950)
 
 Task.find_or_create_by(description: 'Vyluxovat', due_date: Date.new(2015, 12, 24), group_id: g.id, member_id: m1.id, points: 200, points_original: 200, done: false)
 Task.find_or_create_by(description: 'Vynest kos', due_date: Date.new(2015, 12, 24), group_id: g.id, member_id: m2.id, points: 100, points_original: 100, done: false)
