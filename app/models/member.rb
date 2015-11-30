@@ -2,11 +2,11 @@ class Member < ActiveRecord::Base
   belongs_to :group
   has_many :tasks
 
-  before_create :initialize
+  before_create :init
 
   private
 
-    def initialize
+    def init
       self.points = 0
     end
 end
