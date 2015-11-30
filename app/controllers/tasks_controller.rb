@@ -32,6 +32,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
+    set_due_date
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -46,6 +47,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    set_due_date
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -75,6 +77,17 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :due_date, :group_id, :member_id, :points, :done)
+      params.require(:task).permit(:description, :group_id, :member_id, :points, :done)
+    end
+
+    def set_due_date
+      begin
+        year = params[:task][:due_date][:year]
+        month = params[:task][:due_date][:month]
+        day = params[:task][:due_date][:month]
+        @task.update({due_date: Date.new(year.to_i, month.to_i, day.to_i) })
+      rescue => e
+        render json: { error: "Invalid date syntax" }, status: :unprocessable_entity and return
+      end
     end
 end
